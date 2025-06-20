@@ -1,0 +1,26 @@
+﻿@model Actividad3LengProg3.Models.EstudianteViewModel
+
+@using (Html.BeginForm("Registrar", "Estudiantes", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.Matricula)
+        @Html.TextBoxFor(m => m.Matricula)
+        @Html.ValidationMessageFor(m => m.Matricula)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Nombre)
+        @Html.TextBoxFor(m => m.Nombre)
+        @Html.ValidationMessageFor(m => m.Nombre)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Semestre)
+        @Html.TextBoxFor(m => m.Semestre)
+        @Html.ValidationMessageFor(m => m.Semestre)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Carrera)
+        @Html.TextBoxFor(m => m.Carrera)
+        @Html.ValidationMessageFor(m => m.Carrera)
+    </div>
+    <button type="submit">Registrar</button>
+}
