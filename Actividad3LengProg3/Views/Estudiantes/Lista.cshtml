@@ -1,0 +1,36 @@
+﻿@model List<EstudianteViewModel>
+@{
+    ViewData["Title"] = "Listado de Estudiantes";
+}
+<h2>@ViewData["Title"]</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Matrícula</th>
+            <th>Carrera</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Turno</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var estudiante in Model)
+        {
+            <tr>
+                <td>@estudiante.NombreCompleto</td>
+                <td>@estudiante.Matricula</td>
+                <td>@estudiante.Carrera</td>
+                <td>@estudiante.CorreoInstitucional</td>
+                <td>@estudiante.Telefono</td>
+                <td>@estudiante.Turno</td>
+                <td>
+                    <a asp-action="Editar" asp-route-matricula="@estudiante.Matricula">Editar</a> |
+                    <a asp-action="Eliminar" asp-route-matricula="@estudiante.Matricula">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

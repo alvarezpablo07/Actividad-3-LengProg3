@@ -1,5 +1,8 @@
-﻿using Actividad3LengProg3.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Actividad3LengProg3.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Actividad3LengProg3.Controllers
 {
@@ -7,13 +10,13 @@ namespace Actividad3LengProg3.Controllers
     {
         private static List<EstudianteViewModel> estudiantes = new List<EstudianteViewModel>();
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View(new EstudianteViewModel());
         }
 
         [HttpPost]
-        public ActionResult Registrar(EstudianteViewModel estudiante)
+        public IActionResult Registrar(EstudianteViewModel estudiante)
         {
             if (ModelState.IsValid)
             {
@@ -23,30 +26,34 @@ namespace Actividad3LengProg3.Controllers
             return View("Index", estudiante);
         }
 
-        public ActionResult Lista()
+        public IActionResult Lista()
         {
             return View(estudiantes);
         }
 
-        public ActionResult Editar(string matricula)
+        public IActionResult Editar(string matricula)
         {
             var estudiante = estudiantes.FirstOrDefault(e => e.Matricula == matricula);
             return View(estudiante);
         }
 
         [HttpPost]
-        public ActionResult Editar(EstudianteViewModel estudiante)
+        public IActionResult Editar(EstudianteViewModel estudiante)
         {
-            var index = estudiantes.FindIndex(e => e.Matricula == estudiante.Matricula);
-            if (index >= 0 && ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                estudiantes[index] = estudiante;
+                var existente = estudiantes.FirstOrDefault(e => e.Matricula == estudiante.Matricula);
+                if (existente != null)
+                {
+                    estudiantes.Remove(existente);
+                    estudiantes.Add(estudiante);
+                }
                 return RedirectToAction("Lista");
             }
             return View(estudiante);
         }
 
-        public ActionResult Eliminar(string matricula)
+        public IActionResult Eliminar(string matricula)
         {
             var estudiante = estudiantes.FirstOrDefault(e => e.Matricula == matricula);
             if (estudiante != null)
