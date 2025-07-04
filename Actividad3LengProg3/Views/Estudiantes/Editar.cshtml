@@ -1,6 +1,6 @@
 ﻿@model EstudianteViewModel
 @{
-    ViewData["Title"] = "Registrar Estudiante";
+    ViewData["Title"] = "Editar Estudiante";
 }
 <h2>@ViewData["Title"]</h2>
 
@@ -9,54 +9,50 @@
 
     <div>
         <label asp-for="NombreCompleto"></label>
-        <input asp-for="NombreCompleto" />
+        <input asp-for="NombreCompleto" class="form-control" />
         <span asp-validation-for="NombreCompleto" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="Matricula"></label>
-        <input asp-for="Matricula" />
+        <input asp-for="Matricula" class="form-control" />
         <span asp-validation-for="Matricula" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="Carrera"></label>
-        <input asp-for="Carrera" />
+        <input asp-for="Carrera" class="form-control" />
         <span asp-validation-for="Carrera" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="CorreoInstitucional"></label>
-        <input asp-for="CorreoInstitucional" />
+        <input asp-for="CorreoInstitucional" class="form-control" />
         <span asp-validation-for="CorreoInstitucional" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="Telefono"></label>
-        <input asp-for="Telefono" />
+        <input asp-for="Telefono" class="form-control" />
         <span asp-validation-for="Telefono" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="FechaNacimiento"></label>
-        <input asp-for="FechaNacimiento" type="date" />
+        <input asp-for="FechaNacimiento" type="date" class="form-control" />
         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="Genero"></label>
-        <select asp-for="Genero">
-            <option value="">Seleccione...</option>
-            <option>Masculino</option>
-            <option>Femenino</option>
-            <option>Otro</option>
-        </select>
+        <input type="radio" asp-for="Genero" value="Masculino" /> Masculino
+        <input type="radio" asp-for="Genero" value="Femenina" /> Femenina
         <span asp-validation-for="Genero" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="Turno"></label>
-        <select asp-for="Turno">
+        <select asp-for="Turno" class="form-control">
             <option value="">Seleccione...</option>
             <option>Matutino</option>
             <option>Vespertino</option>
@@ -67,7 +63,7 @@
 
     <div>
         <label asp-for="TipoIngreso"></label>
-        <select asp-for="TipoIngreso">
+        <select asp-for="TipoIngreso" class="form-control">
             <option value="">Seleccione...</option>
             <option>Nuevo Ingreso</option>
             <option>Reingreso</option>
@@ -83,7 +79,7 @@
 
     <div>
         <label asp-for="PorcentajeBeca"></label>
-        <input asp-for="PorcentajeBeca" type="number" />
+        <input asp-for="PorcentajeBeca" type="number" class="form-control" />
         <span asp-validation-for="PorcentajeBeca" class="text-danger"></span>
     </div>
 
@@ -95,7 +91,7 @@
         <span asp-validation-for="AceptaTerminos" class="text-danger"></span>
     </div>
 
-    <button type="submit">Registrar</button>
+    <button type="submit" class="btn btn-primary">Guardar los cambios</button>
 </form>
 
 @section Scripts {
